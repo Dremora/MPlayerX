@@ -23,8 +23,11 @@
 extern NSString * const kSCMVolumeUpKeyEquivalent;
 extern NSString * const kSCMVolumeDownKeyEquivalent;
 extern NSString * const kSCMSwitchAudioKeyEquivalent;
+extern NSString * const kSCMSwitchAudioBackwardsKeyEquivalent;
 extern NSString * const kSCMSwitchSubKeyEquivalent;
+extern NSString * const kSCMSwitchSubBackwardsKeyEquivalent;
 extern NSString * const kSCMSnapShotKeyEquivalent;
+#define kSCMSnapShotKeyEquivalentModifierFlagMask				(NSCommandKeyMask|NSAlternateKeyMask)
 extern NSString * const kSCMMuteKeyEquivalent;
 extern NSString * const kSCMPlayPauseKeyEquivalent;
 extern NSString * const kSCMSwitchVideoKeyEquivalent;

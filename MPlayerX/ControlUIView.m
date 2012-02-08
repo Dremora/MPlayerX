@@ -154,6 +154,7 @@ NSString * const kStringFMTTimeAppendTotal	= @" / %@";
 	[fullScreenButton setKeyEquivalentModifierMask:kSCMFullscreenKeyEquivalentModifierFlagMask];
 	[fullScreenButton setKeyEquivalent:kSCMFullScrnKeyEquivalent];
 
+    [menuSnapshot setKeyEquivalentModifierMask:kSCMSnapShotKeyEquivalentModifierFlagMask];
 	[menuSnapshot setKeyEquivalent:kSCMSnapShotKeyEquivalent];
 
 	[menuSubScaleInc setKeyEquivalentModifierMask:kSCMSubScaleIncreaseKeyEquivalentModifierFlagMask];
@@ -165,7 +166,9 @@ NSString * const kStringFMTTimeAppendTotal	= @" / %@";
 	[menuPlayFromLastStoppedPlace setKeyEquivalentModifierMask:kSCMPlayFromLastStoppedKeyEquivalentModifierFlagMask];
 	
 	[menuSwitchSub setKeyEquivalent:kSCMSwitchSubKeyEquivalent];
+	[menuSwitchSubBackwards setKeyEquivalent:kSCMSwitchSubBackwardsKeyEquivalent];
 	[menuSwitchAudio setKeyEquivalent:kSCMSwitchAudioKeyEquivalent];
+	[menuSwitchAudioBackwards setKeyEquivalent:kSCMSwitchAudioBackwardsKeyEquivalent];
 	[menuSwitchVideo setKeyEquivalent:kSCMSwitchVideoKeyEquivalent];
 
 	[menuVolInc setKeyEquivalent:kSCMVolumeUpKeyEquivalent];
@@ -921,6 +924,7 @@ NSString * const kStringFMTTimeAppendTotal	= @" / %@";
 
 -(IBAction) stepSubtitles:(id)sender
 {
+    BOOL backwards = ([sender tag] == -1);
 	int selectedTag = -2;
 	NSMenuItem* mItem;
 	
@@ -933,12 +937,20 @@ NSString * const kStringFMTTimeAppendTotal	= @" / %@";
 	}
 	// 得到下一个字幕的tag
 	// 如果没有一个菜单选项被选中，那么就选中隐藏显示字幕
-	selectedTag++;
+    if (backwards) {
+        if (selectedTag <= -1) {
+            selectedTag = [subListMenu numberOfItems] - 3;
+        } else {
+            selectedTag--;
+        }
+    } else {
+        selectedTag++;
+    }
+    if (!(mItem = [subListMenu itemWithTag:selectedTag])) {
+        // 如果是字幕的最后一项，那么就轮到隐藏字幕菜单选项
+        mItem = [subListMenu itemWithTag:-1];
+    }
 	
-	if (!(mItem = [subListMenu itemWithTag:selectedTag])) {
-		// 如果是字幕的最后一项，那么就轮到隐藏字幕菜单选项
-		mItem = [subListMenu itemWithTag:-1];
-	}
 	[self setSubWithID:mItem];
 }
 
@@ -966,19 +978,29 @@ NSString * const kStringFMTTimeAppendTotal	= @" / %@";
 	NSUInteger num = [audioListMenu numberOfItems];
 	
 	if (num) {
+        BOOL backwards = ([sender tag] == -1);
 		NSUInteger idx = 0, found = 0;
 		NSMenuItem* mItem;
 		
 		for (mItem in [audioListMenu itemArray]) {
 			if ([mItem state] == NSOnState) {
-				found = idx+1;
+				found = idx;
 				break;
 			}
 			idx++;
 		}
-		if (found >= num) {
-			found = 0;
-		}
+        if (backwards) {
+            if (found <= 0) {
+                found = num - 1;
+            } else {
+                found--;
+            }
+        } else {
+            found++;
+            if (found >= num) {
+                found = 0;
+            }
+        }
 		[self setAudioWithID:[audioListMenu itemAtIndex:found]];
 	}
 }
@@ -1283,6 +1305,7 @@ NSString * const kStringFMTTimeAppendTotal	= @" / %@";
 	[audioDelayText setEnabled:YES];
 	
 	[menuSwitchAudio setEnabled:YES];
+	[menuSwitchAudioBackwards setEnabled:YES];
 	[menuSwitchVideo setEnabled:YES];
 	
 	[menuToggleAuxiliaryCtrls setEnabled:YES];
@@ -1348,7 +1371,9 @@ NSString * const kStringFMTTimeAppendTotal	= @" / %@";
 	[audioDelayText setEnabled:NO];
 	
 	[menuSwitchAudio setEnabled:NO];
+	[menuSwitchAudioBackwards setEnabled:NO];
 	[menuSwitchSub setEnabled:NO];
+	[menuSwitchSubBackwards setEnabled:NO];
 	[menuSwitchVideo setEnabled:NO];
 	
 	[menuSubScaleInc setEnabled:NO];
@@ -1571,6 +1596,7 @@ NSString * const kStringFMTTimeAppendTotal	= @" / %@";
 		}
 
 		[menuSwitchSub setEnabled:YES];
+        [menuSwitchSubBackwards setEnabled:YES];
 		[menuSubScaleInc setEnabled:YES];
 		[menuSubScaleDec setEnabled:YES];
 		[menuSubDelayInc setEnabled:YES];
@@ -1580,6 +1606,7 @@ NSString * const kStringFMTTimeAppendTotal	= @" / %@";
 		
 	} else if (changeKind == NSKeyValueChangeSetting) {
 		[menuSwitchSub setEnabled:NO];
+        [menuSwitchSubBackwards setEnabled:NO];
 		[menuSubScaleInc setEnabled:NO];
 		[menuSubScaleDec setEnabled:NO];
 		[menuSubDelayInc setEnabled:NO];
@@ -1633,8 +1660,10 @@ NSString * const kStringFMTTimeAppendTotal	= @" / %@";
 		[[audioListMenu itemAtIndex:0] setState:NSOnState];
 		
 		[menuSwitchAudio setEnabled:YES];
+		[menuSwitchAudioBackwards setEnabled:YES];
 	} else {
 		[menuSwitchAudio setEnabled:NO];
+		[menuSwitchAudioBackwards setEnabled:NO];
 	}
 }
 

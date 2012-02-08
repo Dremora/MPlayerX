@@ -82,10 +82,12 @@
 	
 	IBOutlet NSMenuItem *menuSnapshot;
 	IBOutlet NSMenuItem *menuSwitchSub;
+	IBOutlet NSMenuItem *menuSwitchSubBackwards;
 	IBOutlet NSMenuItem *menuSubScaleInc;
 	IBOutlet NSMenuItem *menuSubScaleDec;
 	IBOutlet NSMenuItem *menuPlayFromLastStoppedPlace;
 	IBOutlet NSMenuItem *menuSwitchAudio;
+	IBOutlet NSMenuItem *menuSwitchAudioBackwards;
 	IBOutlet NSMenuItem *menuVolInc;
 	IBOutlet NSMenuItem *menuVolDec;
 	IBOutlet NSMenuItem *menuToggleLockAspectRatio;

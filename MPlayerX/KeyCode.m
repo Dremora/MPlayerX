@@ -21,17 +21,19 @@
 #import <Cocoa/Cocoa.h>
 
 /////////////////////////////////short keys defination/////////////////////////////////
-NSString * const kSCMVolumeUpKeyEquivalent		= @"=";
-NSString * const kSCMVolumeDownKeyEquivalent	= @"-";
-NSString * const kSCMSwitchAudioKeyEquivalent	= @"a";
-NSString * const kSCMSwitchSubKeyEquivalent		= @"s";
-NSString * const kSCMSnapShotKeyEquivalent		= @"S";
-NSString * const kSCMMuteKeyEquivalent			= @"m";
-NSString * const kSCMPlayPauseKeyEquivalent		= @" ";
-NSString * const kSCMFullScrnKeyEquivalent		= @"f";
-NSString * const kSCMFillScrnKeyEquivalent		= @"F";
-NSString * const kSCMAcceControlKeyEquivalent	= @"c";
-NSString * const kSCMSwitchVideoKeyEquivalent	= @"v";
+NSString * const kSCMVolumeUpKeyEquivalent              = @"=";
+NSString * const kSCMVolumeDownKeyEquivalent            = @"-";
+NSString * const kSCMSwitchAudioKeyEquivalent           = @"a";
+NSString * const kSCMSwitchAudioBackwardsKeyEquivalent	= @"A";
+NSString * const kSCMSwitchSubKeyEquivalent             = @"s";
+NSString * const kSCMSwitchSubBackwardsKeyEquivalent    = @"S";
+NSString * const kSCMSnapShotKeyEquivalent              = @"s";
+NSString * const kSCMMuteKeyEquivalent                  = @"m";
+NSString * const kSCMPlayPauseKeyEquivalent             = @" ";
+NSString * const kSCMFullScrnKeyEquivalent              = @"f";
+NSString * const kSCMFillScrnKeyEquivalent              = @"F";
+NSString * const kSCMAcceControlKeyEquivalent           = @"c";
+NSString * const kSCMSwitchVideoKeyEquivalent           = @"v";
 
 NSString * const kSCMSubScaleIncreaseKeyEquivalent		= @"=";
 NSString * const kSCMSubScaleDecreaseKeyEquivalent		= @"-";

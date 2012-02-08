@@ -815,6 +815,17 @@
 									<reference key="NSOnImage" ref="35465992"/>
 									<reference key="NSMixedImage" ref="502551668"/>
 								</object>
+								<object class="NSMenuItem" id="660573890">
+									<reference key="NSMenu" ref="302108905"/>
+									<bool key="NSIsDisabled">YES</bool>
+									<bool key="NSIsAlternate">YES</bool>
+									<string key="NSTitle">Previous Audio</string>
+									<string key="NSKeyEquiv"/>
+									<int key="NSMnemonicLoc">2147483647</int>
+									<reference key="NSOnImage" ref="35465992"/>
+									<reference key="NSMixedImage" ref="502551668"/>
+									<int key="NSTag">-1</int>
+								</object>
 								<object class="NSMenuItem" id="277556048">
 									<reference key="NSMenu" ref="302108905"/>
 									<bool key="NSIsDisabled">YES</bool>
@@ -959,6 +970,17 @@
 									<int key="NSMnemonicLoc">2147483647</int>
 									<reference key="NSOnImage" ref="35465992"/>
 									<reference key="NSMixedImage" ref="502551668"/>
+								</object>
+								<object class="NSMenuItem" id="1049029195">
+									<reference key="NSMenu" ref="302108905"/>
+									<bool key="NSIsDisabled">YES</bool>
+									<bool key="NSIsAlternate">YES</bool>
+									<string key="NSTitle">Previous Subtitle</string>
+									<string key="NSKeyEquiv"/>
+									<int key="NSMnemonicLoc">2147483647</int>
+									<reference key="NSOnImage" ref="35465992"/>
+									<reference key="NSMixedImage" ref="502551668"/>
+									<int key="NSTag">-1</int>
 								</object>
 								<object class="NSMenuItem" id="199276934">
 									<reference key="NSMenu" ref="302108905"/>
@@ -3456,6 +3478,38 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
+						<string key="label">menuSwitchAudioBackwards</string>
+						<reference key="source" ref="85098728"/>
+						<reference key="destination" ref="660573890"/>
+					</object>
+					<int key="connectionID">1168</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">menuSwitchSubBackwards</string>
+						<reference key="source" ref="85098728"/>
+						<reference key="destination" ref="1049029195"/>
+					</object>
+					<int key="connectionID">1169</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">stepAudios:</string>
+						<reference key="source" ref="85098728"/>
+						<reference key="destination" ref="660573890"/>
+					</object>
+					<int key="connectionID">1170</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">stepSubtitles:</string>
+						<reference key="source" ref="85098728"/>
+						<reference key="destination" ref="1049029195"/>
+					</object>
+					<int key="connectionID">1171</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
 						<string key="label">controlUI</string>
 						<reference key="source" ref="774071611"/>
 						<reference key="destination" ref="85098728"/>
@@ -5038,6 +5092,8 @@
 							<reference ref="698940786"/>
 							<reference ref="223276924"/>
 							<reference ref="159735098"/>
+							<reference ref="660573890"/>
+							<reference ref="1049029195"/>
 						</object>
 						<reference key="parent" ref="953076792"/>
 					</object>
@@ -5254,6 +5310,16 @@
 						<reference key="object" ref="604740041"/>
 						<reference key="parent" ref="778028461"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">1166</int>
+						<reference key="object" ref="660573890"/>
+						<reference key="parent" ref="302108905"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">1167</int>
+						<reference key="object" ref="1049029195"/>
+						<reference key="parent" ref="302108905"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -5337,6 +5403,8 @@
 					<string>1160.IBPluginDependency</string>
 					<string>1161.IBPluginDependency</string>
 					<string>1162.IBPluginDependency</string>
+					<string>1166.IBPluginDependency</string>
+					<string>1167.IBPluginDependency</string>
 					<string>124.IBPluginDependency</string>
 					<string>125.IBPluginDependency</string>
 					<string>126.IBPluginDependency</string>
@@ -5541,6 +5609,8 @@
 							<string key="toolTip">In fullscreen mode, you could also enlarge/shrink frame by alt + scroll or magnify on touchpad</string>
 						</object>
 					</object>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -5846,7 +5916,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">1165</int>
+			<int key="maxID">1171</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -6381,7 +6451,9 @@
 							<string>menuSubScaleDec</string>
 							<string>menuSubScaleInc</string>
 							<string>menuSwitchAudio</string>
+							<string>menuSwitchAudioBackwards</string>
 							<string>menuSwitchSub</string>
+							<string>menuSwitchSubBackwards</string>
 							<string>menuSwitchVideo</string>
 							<string>menuToggleAuxiliaryCtrls</string>
 							<string>menuToggleFillScreen</string>
@@ -6418,6 +6490,8 @@
 							<string>NSButton</string>
 							<string>NSButton</string>
 							<string>NSTextField</string>
+							<string>NSMenuItem</string>
+							<string>NSMenuItem</string>
 							<string>NSMenuItem</string>
 							<string>NSMenuItem</string>
 							<string>NSMenuItem</string>
@@ -6520,7 +6594,9 @@
 							<string>menuSubScaleDec</string>
 							<string>menuSubScaleInc</string>
 							<string>menuSwitchAudio</string>
+							<string>menuSwitchAudioBackwards</string>
 							<string>menuSwitchSub</string>
+							<string>menuSwitchSubBackwards</string>
 							<string>menuSwitchVideo</string>
 							<string>menuToggleAuxiliaryCtrls</string>
 							<string>menuToggleFillScreen</string>
@@ -6700,7 +6776,15 @@
 								<string key="candidateClassName">NSMenuItem</string>
 							</object>
 							<object class="IBToOneOutletInfo">
+								<string key="name">menuSwitchAudioBackwards</string>
+								<string key="candidateClassName">NSMenuItem</string>
+							</object>
+							<object class="IBToOneOutletInfo">
 								<string key="name">menuSwitchSub</string>
+								<string key="candidateClassName">NSMenuItem</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">menuSwitchSubBackwards</string>
 								<string key="candidateClassName">NSMenuItem</string>
 							</object>
 							<object class="IBToOneOutletInfo">
